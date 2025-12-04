@@ -415,6 +415,36 @@ def build_paradox_dashboard(counties, county_data, medicare_only, dual_eligible)
         row=1, col=2
     )
     
+    # Add COVID-19 impact shaded region as a filled trace (2020-2021)
+    fig.add_trace(
+        go.Scatter(
+            x=[2020, 2020, 2021, 2021, 2020],
+            y=[0, 65, 65, 0, 0],
+            fill="toself",
+            fillcolor="rgba(255,180,50,0.2)",
+            line=dict(color="rgba(255,180,50,0.6)", width=2),
+            mode="lines",
+            name="COVID-19 Peak",
+            showlegend=False,
+            hoverinfo="skip"
+        ),
+        row=1, col=2
+    )
+    
+    # COVID annotation - positioned at top of shaded region
+    fig.add_annotation(
+        x=2020.5,
+        y=63,
+        text="<b>COVID-19</b><br><sup>Peak Impact</sup>",
+        showarrow=False,
+        font=dict(size=11, color="#ffcc00"),
+        bgcolor="rgba(40,40,40,0.9)",
+        bordercolor="#ffcc00",
+        borderwidth=2,
+        borderpad=6,
+        xref="x2", yref="y2"
+    )
+    
     # ===== BAR CHART: Top 10 Need Counties =====
     top_need_sorted = top_need.sort_values("need_index", ascending=True)
     

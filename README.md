@@ -76,7 +76,7 @@ The data shows:
 
 ## Authors
 
-Data Science Visualization Project Team
+Sahran Ashoor, Carisma Spears, Lisa Zheng
 
 ## License
 
